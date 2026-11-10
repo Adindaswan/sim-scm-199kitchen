@@ -34,7 +34,7 @@ st.markdown("""
 
 /* GLOBAL */
 html, body, [class*="css"] {
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
 }
 
 .stApp {
@@ -52,7 +52,10 @@ html, body, [class*="css"] {
     padding-bottom: 3rem;
 }
 
-/* MAIN HEADER */
+/* ==========================================
+   PREMIUM MAIN HEADER
+========================================== */
+
 .main-header {
     background: linear-gradient(
         120deg,
@@ -60,39 +63,44 @@ html, body, [class*="css"] {
         #F5F4E9 48%,
         #E7F2E8 100%
     );
-    padding: 32px;
+    padding: 36px 38px;
     border-radius: 24px;
     border: 1px solid #EAEDE4;
     margin-bottom: 28px;
-    box-shadow: 0 5px 20px rgba(70,100,70,0.04);
-}
-
-.main-title {
-    font-size: 29px;
-    font-weight: 800;
-    color: #344F3D;
-    margin: 0;
-    letter-spacing: -1px;
-}
-
-.sub-title {
-    font-size: 13px;
-    color: #718274;
-    margin-top: 9px;
-    margin-bottom: 0;
-    line-height: 1.8;
+    box-shadow: 0 8px 25px rgba(70,100,70,0.055);
 }
 
 .header-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.65);
+    background: rgba(255,255,255,0.75);
     color: #62816A;
-    padding: 6px 13px;
+    padding: 7px 15px;
     border-radius: 30px;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.5px;
-    margin-bottom: 13px;
+    margin-bottom: 17px;
+}
+
+.main-title {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: clamp(26px, 3vw, 36px) !important;
+    font-weight: 800 !important;
+    color: #344F3D !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    line-height: 1.35 !important;
+    letter-spacing: -1.2px !important;
+}
+
+.sub-title {
+    font-family: 'Plus Jakarta Sans', sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    color: #718274 !important;
+    margin-top: 12px !important;
+    margin-bottom: 0 !important;
+    line-height: 1.9 !important;
 }
 
 /* SIDEBAR */
@@ -131,7 +139,7 @@ html, body, [class*="css"] {
 /* SIDEBAR BRAND */
 .sidebar-brand {
     background: linear-gradient(135deg, #E4F0E5, #FFF0E6);
-    padding: 17px;
+    padding: 19px;
     border-radius: 17px;
     margin-bottom: 20px;
     border: 1px solid #E5EBE2;
@@ -139,14 +147,17 @@ html, body, [class*="css"] {
 
 .sidebar-brand-title {
     color: #405C46;
-    font-size: 17px;
+    font-size: 18px;
     font-weight: 800;
+    letter-spacing: -0.5px;
 }
 
 .sidebar-brand-sub {
     color: #849387;
     font-size: 10px;
-    margin-top: 4px;
+    margin-top: 5px;
+    letter-spacing: 1px;
+    font-weight: 600;
 }
 
 /* SECTION TITLE */
@@ -188,6 +199,7 @@ h3 {
     font-weight: 800;
     color: #344F3D;
     margin-top: 10px;
+    letter-spacing: -0.7px;
 }
 
 /* CONTENT CARDS */
@@ -218,6 +230,7 @@ h3 {
     border-radius: 11px;
     border-color: #DFE8DF;
     background: #FCFDFC;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .stSelectbox div[data-baseweb="select"] {
@@ -242,6 +255,7 @@ h3 {
     padding: 10px 20px;
     font-weight: 700;
     transition: 0.2s ease;
+    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .stButton > button:hover,
@@ -257,11 +271,6 @@ h3 {
     border-radius: 13px;
 }
 
-/* SUCCESS */
-[data-testid="stAlert"][data-baseweb="notification"] {
-    border-radius: 13px;
-}
-
 /* DIVIDER */
 hr {
     border-color: #E8EEE7;
@@ -273,14 +282,20 @@ hr {
     font-size: 12px;
 }
 
-/* MOBILE */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
     .main-title {
-        font-size: 21px;
+        font-size: 23px !important;
+        letter-spacing: -0.7px !important;
     }
 
     .main-header {
-        padding: 22px;
+        padding: 23px 20px;
+        border-radius: 18px;
+    }
+
+    .sub-title {
+        font-size: 12px !important;
     }
 
     .metric-card {
@@ -289,7 +304,11 @@ hr {
     }
 
     .metric-value {
-        font-size: 20px;
+        font-size: 19px;
+    }
+
+    .header-tag {
+        font-size: 9px;
     }
 }
 </style>
@@ -298,23 +317,11 @@ hr {
 # ==========================================
 # 3. HEADER UTAMA
 # ==========================================
+# HTML dibuat satu baris agar tidak terbaca
+# sebagai teks Markdown oleh Streamlit.
+
 st.markdown("""
-<div class="main-header">
-    <div class="header-tag">
-        ✨ 199 KITCHEN • SINGOSARI, MALANG
-    </div>
-
-    <p class="main-title">
-        🍲 Welcome to 199 Kitchen!
-    </p>
-
-    <p class="sub-title">
-        Your Kitchen Business, Managed Smarter.
-        <br>
-        Sistem informasi manajemen stok, HPP,
-        penjualan dan forecasting dalam satu dashboard.
-    </p>
-</div>
+<div class="main-header"><div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div><p class="main-title">🍲 Welcome to 199 Kitchen!</p><p class="sub-title">Your Kitchen Business, Managed Smarter.<br>Sistem informasi manajemen stok, HPP, penjualan dan forecasting dalam satu dashboard.</p></div>
 """, unsafe_allow_html=True)
 
 # ==========================================
@@ -339,6 +346,7 @@ def load_data_from_sheets():
         url_supp = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=Supplier%20DB"
 
         return pd.read_csv(url_bom), pd.read_csv(url_fefo), pd.read_csv(url_sales), pd.read_csv(url_supp)
+
     except Exception as e:
         st.error(f"Gagal mengambil data: {e}")
         return pd.DataFrame(), pd.DataFrame(), pd.DataFrame(), pd.DataFrame()
@@ -349,10 +357,7 @@ df_bom, df_fefo, df_sales, df_supp = load_data_from_sheets()
 # 6. SIDEBAR NAVIGATION
 # ==========================================
 st.sidebar.markdown("""
-<div class="sidebar-brand">
-    <div class="sidebar-brand-title">🍲 199 KITCHEN</div>
-    <div class="sidebar-brand-sub">SMART KITCHEN MANAGEMENT</div>
-</div>
+<div class="sidebar-brand"><div class="sidebar-brand-title">🍲 199 KITCHEN</div><div class="sidebar-brand-sub">SMART KITCHEN MANAGEMENT</div></div>
 """, unsafe_allow_html=True)
 
 st.sidebar.markdown("### 📌 Navigasi Modul")
@@ -380,6 +385,7 @@ st.sidebar.caption("🟢 Google Sheets: Connected")
 st.sidebar.caption("🟢 Make.com Webhook: Active")
 
 st.sidebar.markdown("---")
+
 st.sidebar.markdown(
     "<p style='font-size: 11px; color: #89958C;'>Made with ❤️ for 199 Kitchen</p>",
     unsafe_allow_html=True
@@ -464,6 +470,7 @@ if menu_option == "📊 Dashboard Analytics":
                 st.bar_chart(chart_data.set_index(kanal_cols[0]), color="#88AE91")
             else:
                 st.dataframe(df_sales, use_container_width=True)
+
         else:
             st.info("Belum ada data transaksi tercatat.")
 
