@@ -14,31 +14,28 @@ st.set_page_config(
 )
 
 # ==========================================
-# 2. CUSTOM PINK & GREEN PALETTE THEME (CSS)
+# 2. SOLID PASTEL PALETTE THEME (TANPA GRADASI)
 # ==========================================
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg-main: #F7FAF7;
-    --sidebar-bg: linear-gradient(180deg, #EBF3EC 0%, #F5F9F6 50%, #FFFFFF 100%);
+    --bg-main: #F7FAF9;
+    --sidebar-bg: #E0F2F4;
     --card-bg: #FFFFFF;
     --text-main: #1F2937;
-    --text-muted: #4B5563;
+    --text-muted: #555B6E;
     
-    /* Custom Palette dari Referensi */
-    --green-dark: #1D411F;
-    --green-vivid: #007944;
-    --green-sage: #B1CC6C;
-    --green-leaf: #71A95A;
+    /* Solid Palette dari Referensi */
+    --color-green-lime: #DDDD7B;
+    --color-blue-soft: #E0F2F4;
+    --color-blue-pastel: #BAD6DA;
+    --color-pink-soft: #FFDBDF;
+    --color-pink-bold: #F791A9;
+    --color-yellow: #FFE797;
     
-    --pink-soft: #FF99B3;
-    --pink-bright: #FF738C;
-    --pink-hot: #F35588;
-    --pink-light: #FFBBB4;
-    
-    --border-color: #E2E8E4;
+    --border-color: #D1E0E3;
 }
 
 /* GLOBAL */
@@ -76,22 +73,22 @@ html, body, [class*="css"] {
     height: 120px;
     border-radius: 20px;
     border: 1px solid var(--border-color);
-    background: #EBF3EC;
-    background-image: linear-gradient(90deg, #EBF3EC 0px, #FFFFFF 50%, #EBF3EC 100%);
+    background: #E0F2F4;
+    background-image: linear-gradient(90deg, #E0F2F4 0px, #FFFFFF 50%, #E0F2F4 100%);
     background-size: 1000px 100%;
     animation: shimmer 1.8s infinite linear;
 }
 
 /* ==========================================
-   HERO BANNER SYSTEM
+   HERO BANNER SYSTEM (SOLID COLOR)
 ========================================== */
 .hero-banner {
-    background: linear-gradient(135deg, #EAF4EE 0%, #FFF0F3 100%);
+    background: #BAD6DA;
     padding: 30px 36px;
     border-radius: 22px;
     border: 1px solid var(--border-color);
     margin-bottom: 26px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+    box-shadow: 0 4px 18px rgba(0,0,0,0.02);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -102,32 +99,32 @@ html, body, [class*="css"] {
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #1D411F;
-    box-shadow: 0 4px 12px rgba(29, 65, 31, 0.15);
+    border: 3px solid #1F2937;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     flex-shrink: 0;
 }
 
 .hero-title {
     font-size: clamp(22px, 2.5vw, 32px) !important;
     font-weight: 800 !important;
-    color: #1D411F !important;
+    color: #1F2937 !important;
     margin: 0 !important;
     letter-spacing: -0.8px !important;
 }
 
 .hero-sub {
     font-size: 12.5px !important;
-    font-weight: 500 !important;
-    color: var(--text-muted) !important;
+    font-weight: 600 !important;
+    color: #374151 !important;
     margin-top: 6px !important;
     margin-bottom: 0 !important;
 }
 
 /* ==========================================
-   SIDEBAR STYLING (TANPA POIN, TEKS HITAM)
+   SIDEBAR STYLING (SOLID, TANPA POIN, TEKS HITAM)
 ========================================== */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #EBF3EC 0%, #FFF5F7 50%, #FFFFFF 100%);
+    background: #BAD6DA;
     border-right: 1px solid var(--border-color);
 }
 
@@ -156,7 +153,7 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] .stTextInput input::placeholder {
-    color: #9CA3AF !important;
+    color: #6B7280 !important;
 }
 
 /* RADIO MENU SEBAGAI KOTAK BERSIH TANPA TITIK POIN */
@@ -186,18 +183,18 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: #FFF0F3;
-    border-color: #FF738C;
+    background: #FFDBDF;
+    border-color: #F791A9;
     transform: translateX(3px);
 }
 
 [data-testid="stSidebar"] hr {
-    border-color: #E2E8E4 !important;
+    border-color: #A4C5CB !important;
 }
 
 /* SECTION TITLE */
 h1, h2, h3, h4, h5 {
-    color: #1D411F !important;
+    color: #1F2937 !important;
     font-weight: 700 !important;
 }
 
@@ -215,7 +212,7 @@ h1, h2, h3, h4, h5 {
 
 .metric-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(0, 121, 68, 0.08);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
 }
 
 .metric-label {
@@ -229,7 +226,7 @@ h1, h2, h3, h4, h5 {
 .metric-value {
     font-size: 24px;
     font-weight: 800;
-    color: #1D411F;
+    color: #1F2937;
     margin-top: 10px;
 }
 
@@ -255,21 +252,21 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0 4px 18px rgba(0,0,0,0.03);
 }
 
-/* BUTTON DENGAN PALET PINK & GREEN */
+/* BUTTON DENGAN PALET SOLID */
 .stButton > button, .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #007944 0%, #1D411F 100%);
-    color: #FFFFFF;
+    background: #F791A9;
+    color: #1F2937;
     border: none;
     border-radius: 12px;
     padding: 10px 18px;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(0, 121, 68, 0.2);
+    box-shadow: 0 4px 12px rgba(247, 145, 169, 0.3);
     transition: 0.2s ease;
 }
 
 .stButton > button:hover, .stFormSubmitButton > button:hover {
-    background: linear-gradient(135deg, #FF738C 0%, #F35588 100%);
-    color: #FFFFFF;
+    background: #DDDD7B;
+    color: #1F2937;
     transform: translateY(-2px);
 }
 </style>
@@ -308,7 +305,7 @@ function updateClock() {
     
     const el = document.getElementById('realtime-clock');
     if(el) {
-        el.innerHTML = '<div style="background: #FFFFFF; border: 1px solid #E2E8E4; padding: 24px 32px; border-radius: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.02); margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;"><div><p style="font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: #1F2937; margin: 0 0 4px 0; letter-spacing: -0.6px;">' + sapaan + ', Ibu Adinda Arum Sari!</p><p style="font-size: 13px; color: #4B5563; font-weight: 600; margin: 0;">' + dateStr + '</p></div><div style="font-size: 32px;">👋</div></div>';
+        el.innerHTML = '<div style="background: #FFFFFF; border: 1px solid #D1E0E3; padding: 24px 32px; border-radius: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.02); margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;"><div><p style="font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: #1F2937; margin: 0 0 4px 0; letter-spacing: -0.6px;">' + sapaan + ', Ibu Adinda Arum Sari!</p><p style="font-size: 13px; color: #555B6E; font-weight: 600; margin: 0;">' + dateStr + '</p></div><div style="font-size: 32px;">👋</div></div>';
     }
 }
 updateClock();
@@ -327,15 +324,15 @@ st.markdown(f"""
     <div style="display: flex; align-items: center; gap: 22px;">
         <img src="{logo_url}" class="hero-logo" alt="199 Kitchen Logo">
         <div>
-            <div style="font-size: 10px; font-weight: 800; color: #007944; letter-spacing: 1.2px; margin-bottom: 6px;">199 KITCHEN • SINGOSARI, MALANG</div>
+            <div style="font-size: 10px; font-weight: 800; color: #1F2937; letter-spacing: 1.2px; margin-bottom: 6px;">199 KITCHEN • SINGOSARI, MALANG</div>
             <p class="hero-title">Sweet & Savory Supply Chain System</p>
             <p class="hero-sub">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
         </div>
     </div>
     <div style="display: flex; gap: 6px; align-items: center;">
-        <span style="width: 8px; height: 8px; background: #007944; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 8px; height: 8px; background: #B1CC6C; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 8px; height: 8px; background: #FF99B3; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 10px; height: 10px; background: #F791A9; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 10px; height: 10px; background: #DDDD7B; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 10px; height: 10px; background: #FFE797; border-radius: 50%; display: inline-block;"></span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -381,15 +378,21 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 7. SIDEBAR NAVIGATION (KOTAK BERSIH TANPA POIN, TEKS HITAM)
+# 7. SIDEBAR NAVIGATION (DENGAN TOMBOL COLLAPSE SOLID & KOTAK MENU BERSIH)
 # ==========================================
 st.sidebar.markdown(f"""
 <div class="sidebar-brand-card">
-    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #007944;">
+    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #1F2937;">
     <div style="color: #1F2937; font-size: 14px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #4B5563; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+    <div style="color: #555B6E; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
+
+# Tombol Sembunyikan Panel (Collapse Sidebar) warna solid agar selalu terlihat
+if st.sidebar.button("☰ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
+    st.rerun()
+
+st.sidebar.markdown("---")
 
 # Kotak Pencarian Menu
 search_query = st.sidebar.text_input("Cari Menu", placeholder="🔍 Cari menu...", label_visibility="collapsed")
@@ -423,7 +426,7 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🟢 Google Sheets: Connected")
 st.sidebar.caption("🟢 Make.com Webhook: Active")
 st.sidebar.markdown("---")
-st.sidebar.markdown("<p style='font-size: 10.5px; color: #4B5563; text-align: center; font-weight: 600;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='font-size: 10.5px; color: #1F2937; text-align: center; font-weight: 700;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
 
 # ==========================================
 # 8. MODUL 1: BERANDA (DASHBOARD ANALYTICS)
@@ -453,9 +456,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c1:
         st.markdown(f'''
-            <div class="metric-card" style="border-left: 5px solid #007944;">
+            <div class="metric-card" style="border-left: 5px solid #F791A9;">
                 <div class="metric-label">💰 Total Omzet Gross</div>
-                <div class="metric-value" style="color: #007944;">Rp {total_omzet:,.0f}</div>
+                <div class="metric-value" style="color: #1F2937;">Rp {total_omzet:,.0f}</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("👁️ Buka Log Penjualan", use_container_width=True, key="btn_sales_log"):
@@ -464,9 +467,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c2:
         st.markdown(f'''
-            <div class="metric-card" style="border-left: 5px solid #71A95A;">
+            <div class="metric-card" style="border-left: 5px solid #BAD6DA;">
                 <div class="metric-label">🧾 Total Transaksi</div>
-                <div class="metric-value" style="color: #1D411F;">{total_trx} Pesanan</div>
+                <div class="metric-value" style="color: #1F2937;">{total_trx} Pesanan</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("👁️ Lihat Detail Transaksi", use_container_width=True, key="btn_trx_detail"):
@@ -474,8 +477,8 @@ if menu_option == "📊 Beranda (Dashboard)":
             st.rerun()
 
     with c3:
-        border_color = "#FF738C" if critical_items > 0 else "#007944"
-        val_color = "#F35588" if critical_items > 0 else "#007944"
+        border_color = "#F791A9" if critical_items > 0 else "#DDDD7B"
+        val_color = "#9B2226" if critical_items > 0 else "#1F2937"
         st.markdown(f'''
             <div class="metric-card" style="border-left: 5px solid {border_color};">
                 <div class="metric-label">📦 Bahan Perlu Reorder</div>
@@ -488,9 +491,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c4:
         st.markdown('''
-            <div class="metric-card" style="border-left: 5px solid #FF99B3;">
+            <div class="metric-card" style="border-left: 5px solid #FFE797;">
                 <div class="metric-label">🛍️ Kanal Penjualan</div>
-                <div class="metric-value" style="color: #F35588;">5 Channel</div>
+                <div class="metric-value" style="color: #1F2937;">5 Channel</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("🚛 Cek Database Supplier", use_container_width=True, key="btn_supp_check"):
@@ -507,7 +510,7 @@ if menu_option == "📊 Beranda (Dashboard)":
             omzet_cols = [c for c in df_sales.columns if "omzet" in c.lower() or "total" in c.lower()]
             if kanal_cols and omzet_cols:
                 chart_data = df_sales.groupby(kanal_cols[0])[omzet_cols[0]].sum().reset_index()
-                st.bar_chart(chart_data.set_index(kanal_cols[0]), color="#007944")
+                st.bar_chart(chart_data.set_index(kanal_cols[0]), color="#BAD6DA")
             else:
                 st.dataframe(df_sales, use_container_width=True)
         else:
@@ -534,11 +537,11 @@ elif menu_option == "📦 Inventory FEFO & Alerts":
         if status_col:
             def highlight_status(val):
                 if 'CRITICAL' in str(val).upper():
-                    return 'background-color: #FFD1D8; color: #9B2226; font-weight: 700;'
+                    return 'background-color: #FFDBDF; color: #9B2226; font-weight: 700;'
                 elif 'WARNING' in str(val).upper():
-                    return 'background-color: #FFF0D9; color: #9B7135; font-weight: 700;'
+                    return 'background-color: #FFE797; color: #7F5539; font-weight: 700;'
                 elif 'SAFE' in str(val).upper():
-                    return 'background-color: #D8F3DC; color: #1B4332; font-weight: 700;'
+                    return 'background-color: #DDDD7B; color: #1F2937; font-weight: 700;'
                 return ''
 
             st.dataframe(df_fefo.style.map(highlight_status, subset=[status_col]), use_container_width=True)
