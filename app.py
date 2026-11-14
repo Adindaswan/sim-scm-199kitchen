@@ -8,27 +8,29 @@ from datetime import datetime
 # 1. KONFIGURASI HALAMAN
 # ==========================================
 st.set_page_config(
-    page_title="SIM SCM 199 Kitchen",
+    page_title="199 Kitchen • Sweet & Savory SCM",
     page_icon="🍲",
     layout="wide",
     initial_sidebar_state="expanded"
 )
 
 # ==========================================
-# 2. MODERN PASTEL ENTERPRISE UI - 199 KITCHEN
+# 2. PREMIUM SOFT PASTEL SAGE THEME (CSS STYLING)
 # ==========================================
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --cream: #FFF9F2;
-    --sage: #E5F1E8;
+    --bg-main: #F4F7F4;
+    --sidebar-bg: #EAF2EB;
+    --card-bg: #FFFFFF;
+    --text-main: #2C3E35;
+    --text-muted: #7E8C82;
+    --sage-primary: #73977B;
     --sage-dark: #527B60;
     --sage-deep: #344F3D;
-    --text: #2C3E35;
-    --muted: #7E8C82;
-    --border: #E4EAE2;
+    --border-color: #E2EAE3;
 }
 
 /* GLOBAL */
@@ -37,13 +39,13 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background: #F7F9F6;
-    color: var(--text);
+    background: var(--bg-main);
+    color: var(--text-main);
 }
 
 .block-container {
-    max-width: 1500px;
-    padding-top: 1rem;
+    max-width: 1550px;
+    padding-top: 1.5rem;
     padding-bottom: 3rem;
 }
 
@@ -63,39 +65,32 @@ html, body, [class*="css"] {
 }
 
 .skeleton-card {
-    height: 115px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: #EEF3ED;
-    background-image: linear-gradient(90deg, #EEF3ED 0px, #FFFFFF 50%, #EEF3ED 100%);
-    background-size: 1000px 100%;
-    animation: shimmer 1.8s infinite linear;
-}
-
-.skeleton-chart {
-    height: 260px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    background: #EEF3ED;
-    background-image: linear-gradient(90deg, #EEF3ED 0px, #FFFFFF 50%, #EEF3ED 100%);
+    height: 120px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    background: #EAF2EB;
+    background-image: linear-gradient(90deg, #EAF2EB 0px, #FFFFFF 50%, #EAF2EB 100%);
     background-size: 1000px 100%;
     animation: shimmer 1.8s infinite linear;
 }
 
 /* ==========================================
-   WELCOME GREETING CARD (PROFESSIONAL)
+   WELCOME GREETING BANNER
 ========================================== */
-.welcome-card {
+.welcome-banner {
     background: #FFFFFF;
-    border: 1px solid var(--border);
-    padding: 26px 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(50,80,50,0.03);
-    margin-bottom: 24px;
+    border: 1px solid var(--border-color);
+    padding: 24px 32px;
+    border-radius: 22px;
+    box-shadow: 0 4px 18px rgba(60,90,60,0.03);
+    margin-bottom: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .welcome-title {
-    font-size: clamp(20px, 2.3vw, 28px);
+    font-size: clamp(20px, 2.2vw, 26px);
     font-weight: 800;
     color: var(--sage-deep);
     margin: 0 0 4px 0;
@@ -104,27 +99,27 @@ html, body, [class*="css"] {
 
 .welcome-date {
     font-size: 13px;
-    color: var(--muted);
+    color: var(--text-muted);
     font-weight: 600;
     margin: 0;
 }
 
-/* PREMIUM MAIN HEADER WITH LOGO */
-.main-header {
-    background: linear-gradient(120deg, #FFF4EC 0%, #F5F6EE 50%, #E7EFE8 100%);
-    padding: 26px 30px;
-    border-radius: 20px;
-    border: 1px solid var(--border);
-    margin-bottom: 24px;
-    box-shadow: 0 4px 18px rgba(50,80,50,0.03);
+/* HERO BANNER SYSTEM */
+.hero-banner {
+    background: linear-gradient(135deg, #F0F6F1 0%, #E5F0E7 100%);
+    padding: 30px 36px;
+    border-radius: 22px;
+    border: 1px solid var(--border-color);
+    margin-bottom: 26px;
+    box-shadow: 0 4px 20px rgba(60,90,60,0.03);
     display: flex;
     align-items: center;
-    gap: 20px;
+    justify-content: space-between;
 }
 
-.header-logo {
-    width: 70px;
-    height: 70px;
+.hero-logo {
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid var(--sage-dark);
@@ -132,93 +127,84 @@ html, body, [class*="css"] {
     flex-shrink: 0;
 }
 
-.header-content {
-    flex-grow: 1;
-}
-
-.header-tag {
-    display: inline-block;
-    background: rgba(255,255,255,0.8);
-    color: var(--sage-dark);
-    padding: 5px 12px;
-    border-radius: 20px;
-    font-size: 9px;
-    font-weight: 800;
-    letter-spacing: 1.2px;
-    margin-bottom: 6px;
-}
-
-.main-title {
-    font-size: clamp(18px, 2vw, 26px) !important;
+.hero-title {
+    font-size: clamp(22px, 2.5vw, 32px) !important;
     font-weight: 800 !important;
     color: var(--sage-deep) !important;
     margin: 0 !important;
-    line-height: 1.3 !important;
-    letter-spacing: -0.6px !important;
+    letter-spacing: -0.8px !important;
 }
 
-.sub-title {
-    font-size: 11.5px !important;
+.hero-sub {
+    font-size: 12.5px !important;
     font-weight: 500 !important;
-    color: var(--muted) !important;
-    margin-top: 4px !important;
+    color: var(--text-muted) !important;
+    margin-top: 6px !important;
     margin-bottom: 0 !important;
 }
 
-/* SIDEBAR STYLING MIRIP CONTOH REFERENSI */
+/* ==========================================
+   SIDEBAR STYLING (CLEAN SAGE KARTU KOTAK)
+========================================== */
 [data-testid="stSidebar"] {
-    background: #1B3024;
-    border-right: 1px solid #243D2F;
-}
-
-[data-testid="stSidebar"] p, 
-[data-testid="stSidebar"] span, 
-[data-testid="stSidebar"] label {
-    color: #E2EFE5 !important;
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
 }
 
 [data-testid="stSidebar"] > div:first-child {
-    padding-top: 1.2rem;
+    padding-top: 1.5rem;
 }
 
-.sidebar-brand {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 14px;
-    border-radius: 14px;
-    margin-bottom: 12px;
-    border: 1px solid rgba(255, 255, 255, 0.08);
+.sidebar-brand-card {
+    background: #FFFFFF;
+    padding: 18px;
+    border-radius: 18px;
+    margin-bottom: 18px;
+    border: 1px solid var(--border-color);
     text-align: center;
+    box-shadow: 0 2px 10px rgba(60,90,60,0.02);
 }
 
-/* STYLING SEARCH BAR & RADIO MENU DI SIDEBAR */
+/* KOTAK PENCARIAN MENU DI SIDEBAR */
 [data-testid="stSidebar"] .stTextInput input {
-    background: #243D2F !important;
-    border: 1px solid #335442 !important;
-    color: #FFFFFF !important;
-    border-radius: 10px;
+    background: #FFFFFF !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-main) !important;
+    border-radius: 12px;
     font-size: 13px;
+    padding: 10px 14px;
 }
 
 [data-testid="stSidebar"] .stTextInput input::placeholder {
-    color: #A3B5A8 !important;
+    color: var(--text-muted) !important;
+}
+
+/* RADIO MENU SEBAGAI KOTAK BERSIH TANPA TITIK POIN */
+[data-testid="stSidebar"] [data-testid="stRadio"] > div {
+    gap: 8px;
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label {
-    font-size: 13.5px;
+    background: #FFFFFF;
+    border: 1px solid var(--border-color);
+    font-size: 13px;
     font-weight: 600;
-    padding: 10px 14px;
-    border-radius: 10px;
-    color: #D1E2D5 !important;
+    padding: 12px 16px;
+    border-radius: 14px;
+    color: var(--text-main) !important;
+    box-shadow: 0 2px 8px rgba(60,90,60,0.02);
     transition: all 0.2s ease;
+    width: 100%;
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: rgba(255, 255, 255, 0.08);
-    color: #FFFFFF !important;
+    background: #F4F9F5;
+    border-color: var(--sage-primary);
+    transform: translateX(3px);
 }
 
 [data-testid="stSidebar"] hr {
-    border-color: #2D4D3C !important;
+    border-color: var(--border-color) !important;
 }
 
 /* SECTION TITLE */
@@ -231,53 +217,53 @@ h1, h2, h3, h4, h5 {
 .metric-card {
     position: relative;
     background: #FFFFFF;
-    border-radius: 18px;
-    padding: 22px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 15px rgba(50,80,50,0.03);
+    border-radius: 20px;
+    padding: 24px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 16px rgba(60,90,60,0.03);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    min-height: 110px;
+    min-height: 120px;
 }
 
 .metric-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 22px rgba(82, 123, 96, 0.08);
+    box-shadow: 0 10px 24px rgba(82, 123, 96, 0.08);
 }
 
 .metric-label {
-    font-size: 9.5px;
-    color: var(--muted);
+    font-size: 10px;
+    color: var(--text-muted);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
 
 .metric-value {
-    font-size: 22px;
+    font-size: 24px;
     font-weight: 800;
     color: var(--sage-deep);
-    margin-top: 8px;
+    margin-top: 10px;
 }
 
 /* DATAFRAME & FORM */
 [data-testid="stDataFrame"] {
-    border: 1px solid var(--border);
-    border-radius: 14px;
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
     overflow: hidden;
 }
 
 .stTextInput input, .stNumberInput input, .stTextArea textarea {
-    border-radius: 10px;
-    border-color: #D3E0D5;
-    background: #FCFDFB;
+    border-radius: 12px;
+    border-color: var(--border-color);
+    background: #FFFFFF;
 }
 
 [data-testid="stForm"] {
     background: #FFFFFF;
-    padding: 24px;
-    border-radius: 18px;
-    border: 1px solid var(--border);
-    box-shadow: 0 4px 18px rgba(50,80,50,0.03);
+    padding: 26px;
+    border-radius: 20px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 18px rgba(60,90,60,0.03);
 }
 
 /* BUTTON */
@@ -285,10 +271,10 @@ h1, h2, h3, h4, h5 {
     background: linear-gradient(135deg, #73977B 0%, #527B60 100%);
     color: #FFFFFF;
     border: none;
-    border-radius: 10px;
-    padding: 9px 16px;
+    border-radius: 12px;
+    padding: 10px 18px;
     font-weight: 700;
-    box-shadow: 0 4px 10px rgba(82, 123, 96, 0.2);
+    box-shadow: 0 4px 12px rgba(82, 123, 96, 0.2);
     transition: 0.2s ease;
 }
 
@@ -304,7 +290,7 @@ if 'nav_selection' not in st.session_state:
     st.session_state.nav_selection = "📊 Beranda (Dashboard)"
 
 # ==========================================
-# 3. LOGIKA WAKTU, TANGGAL & SAPAAN PENGAKSES
+# 3. WAKTU & TANGGAL REAL-TIME AKURAT
 # ==========================================
 current_hour = datetime.now().hour
 if 4 <= current_hour < 11:
@@ -324,26 +310,36 @@ day_name = days_id.get(now.strftime("%a"), now.strftime("%A"))
 month_name = months_id.get(now.strftime("%b"), now.strftime("%B"))
 tanggal_str = f"{day_name}, {now.day} {month_name} {now.year}"
 
-# Tampilkan Kartu Sapaan
+# Tampilkan Banner Sapaan Real-Time
 st.markdown(f"""
-<div class="welcome-card">
-    <p class="welcome-title">{sapaan}, Ibu Adinda Arum Sari!</p>
-    <p class="welcome-date">{tanggal_str}</p>
+<div class="welcome-banner">
+    <div>
+        <p class="welcome-title">{sapaan}, Ibu Adinda Arum Sari!</p>
+        <p class="welcome-date">{tanggal_str}</p>
+    </div>
+    <div style="font-size: 32px;">👋</div>
 </div>
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 4. HEADER UTAMA DENGAN LOGO
+# 4. HERO HEADER UTAMA DENGAN LOGO
 # ==========================================
 logo_url = "https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png"
 
 st.markdown(f"""
-<div class="main-header">
-    <img src="{logo_url}" class="header-logo" alt="199 Kitchen Logo">
-    <div class="header-content">
-        <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
-        <p class="main-title">Sweet & Savory Supply Chain System</p>
-        <p class="sub-title">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
+<div class="hero-banner">
+    <div style="display: flex; align-items: center; gap: 22px;">
+        <img src="{logo_url}" class="hero-logo" alt="199 Kitchen Logo">
+        <div>
+            <div style="font-size: 10px; font-weight: 800; color: #527B60; letter-spacing: 1.2px; margin-bottom: 6px;">199 KITCHEN • SINGOSARI, MALANG</div>
+            <p class="hero-title">Sweet & Savory Supply Chain System</p>
+            <p class="hero-sub">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
+        </div>
+    </div>
+    <div style="display: flex; gap: 6px; align-items: center;">
+        <span style="width: 8px; height: 8px; background: #73977B; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 8px; height: 8px; background: #A3B5A8; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 8px; height: 8px; background: #D2E2D5; border-radius: 50%; display: inline-block;"></span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -382,7 +378,6 @@ skeleton_placeholder.markdown("""
     <div class="skeleton-card"></div>
     <div class="skeleton-card"></div>
 </div>
-<div class="skeleton-chart"></div>
 """, unsafe_allow_html=True)
 
 df_bom, df_fefo, df_sales, df_supp = load_data_from_sheets()
@@ -390,26 +385,19 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 7. SIDEBAR NAVIGATION (DENGAN CARI MENU & TOMBOL COLLAPSE HIJAU)
+# 7. SIDEBAR NAVIGATION (KOTAK BERSIH TANPA TITIK POIN)
 # ==========================================
 st.sidebar.markdown(f"""
-<div class="sidebar-brand">
-    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #73977B;">
-    <div style="color: #FFFFFF; font-size: 14px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #A3B5A8; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+<div class="sidebar-brand-card">
+    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
+    <div style="color: #344F3D; font-size: 14px; font-weight: 800;">199 KITCHEN</div>
+    <div style="color: #7E8C82; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Tombol Sembunyikan Panel (Collapse Sidebar) warna hijau ikon selalu terlihat
-if st.sidebar.button("☰ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
-    st.rerun()
+# Kotak Pencarian Menu
+search_query = st.sidebar.text_input("Cari Menu", placeholder="🔍 Cari menu...", label_visibility="collapsed")
 
-st.sidebar.markdown("---")
-
-# Kotak Pencarian Menu (Cari Menu) seperti pada gambar referensi
-search_query = st.sidebar.text_input("Cari Menu", placeholder="Ketik menu...", label_visibility="collapsed")
-
-# Daftar seluruh modul
 all_menu_options = [
     "📊 Beranda (Dashboard)",
     "📦 Inventory FEFO & Alerts",
@@ -418,7 +406,6 @@ all_menu_options = [
     "🚛 Database Supplier"
 ]
 
-# Filter menu jika diketik di kotak pencarian
 if search_query:
     menu_options = [m for m in all_menu_options if search_query.lower() in m.lower()]
     if not menu_options:
@@ -440,7 +427,7 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🟢 Google Sheets: Connected")
 st.sidebar.caption("🟢 Make.com Webhook: Active")
 st.sidebar.markdown("---")
-st.sidebar.markdown("<p style='font-size: 10.5px; color: #8FA395;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='font-size: 10.5px; color: #7E8C82; text-align: center;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
 
 # ==========================================
 # 8. MODUL 1: BERANDA (DASHBOARD ANALYTICS)
