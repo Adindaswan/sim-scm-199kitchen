@@ -2,7 +2,6 @@ import streamlit as st
 import pandas as pd
 import requests
 import time
-from datetime import datetime
 
 # ==========================================
 # 1. KONFIGURASI HALAMAN
@@ -15,21 +14,31 @@ st.set_page_config(
 )
 
 # ==========================================
-# 2. PREMIUM PURPLE PASTEL THEME (CSS STYLING)
+# 2. CUSTOM PINK & GREEN PALETTE THEME (CSS)
 # ==========================================
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-    --bg-main: #F8F9FC;
-    --sidebar-bg: linear-gradient(180deg, #EAE6FF 0%, #F5F3FF 50%, #FFFFFF 100%);
+    --bg-main: #F7FAF7;
+    --sidebar-bg: linear-gradient(180deg, #EBF3EC 0%, #F5F9F6 50%, #FFFFFF 100%);
     --card-bg: #FFFFFF;
     --text-main: #1F2937;
-    --text-muted: #6B7280;
-    --purple-primary: #8B5CF6;
-    --purple-dark: #6D28D9;
-    --border-color: #E5E7EB;
+    --text-muted: #4B5563;
+    
+    /* Custom Palette dari Referensi */
+    --green-dark: #1D411F;
+    --green-vivid: #007944;
+    --green-sage: #B1CC6C;
+    --green-leaf: #71A95A;
+    
+    --pink-soft: #FF99B3;
+    --pink-bright: #FF738C;
+    --pink-hot: #F35588;
+    --pink-light: #FFBBB4;
+    
+    --border-color: #E2E8E4;
 }
 
 /* GLOBAL */
@@ -67,45 +76,17 @@ html, body, [class*="css"] {
     height: 120px;
     border-radius: 20px;
     border: 1px solid var(--border-color);
-    background: #F3F4F6;
-    background-image: linear-gradient(90deg, #F3F4F6 0px, #FFFFFF 50%, #F3F4F6 100%);
+    background: #EBF3EC;
+    background-image: linear-gradient(90deg, #EBF3EC 0px, #FFFFFF 50%, #EBF3EC 100%);
     background-size: 1000px 100%;
     animation: shimmer 1.8s infinite linear;
 }
 
 /* ==========================================
-   WELCOME GREETING BANNER
+   HERO BANNER SYSTEM
 ========================================== */
-.welcome-banner {
-    background: #FFFFFF;
-    border: 1px solid var(--border-color);
-    padding: 24px 32px;
-    border-radius: 22px;
-    box-shadow: 0 4px 18px rgba(0,0,0,0.02);
-    margin-bottom: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.welcome-title {
-    font-size: clamp(20px, 2.2vw, 26px);
-    font-weight: 800;
-    color: #1F2937;
-    margin: 0 0 4px 0;
-    letter-spacing: -0.6px;
-}
-
-.welcome-date {
-    font-size: 13px;
-    color: var(--text-muted);
-    font-weight: 600;
-    margin: 0;
-}
-
-/* HERO BANNER SYSTEM */
 .hero-banner {
-    background: linear-gradient(135deg, #EBF5FF 0%, #F3E8FF 100%);
+    background: linear-gradient(135deg, #EAF4EE 0%, #FFF0F3 100%);
     padding: 30px 36px;
     border-radius: 22px;
     border: 1px solid var(--border-color);
@@ -121,15 +102,15 @@ html, body, [class*="css"] {
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #8B5CF6;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+    border: 3px solid #1D411F;
+    box-shadow: 0 4px 12px rgba(29, 65, 31, 0.15);
     flex-shrink: 0;
 }
 
 .hero-title {
     font-size: clamp(22px, 2.5vw, 32px) !important;
     font-weight: 800 !important;
-    color: #1F2937 !important;
+    color: #1D411F !important;
     margin: 0 !important;
     letter-spacing: -0.8px !important;
 }
@@ -143,10 +124,10 @@ html, body, [class*="css"] {
 }
 
 /* ==========================================
-   SIDEBAR STYLING (WARNA TEKS HITAM, TANPA POIN)
+   SIDEBAR STYLING (TANPA POIN, TEKS HITAM)
 ========================================== */
 [data-testid="stSidebar"] {
-    background: linear-gradient(180deg, #E9D5FF 0%, #F3E8FF 50%, #FAF5FF 100%);
+    background: linear-gradient(180deg, #EBF3EC 0%, #FFF5F7 50%, #FFFFFF 100%);
     border-right: 1px solid var(--border-color);
 }
 
@@ -178,7 +159,7 @@ html, body, [class*="css"] {
     color: #9CA3AF !important;
 }
 
-/* RADIO MENU SEBAGAI KOTAK BERSIH TANPA TITIK POIN & TEKS HITAM */
+/* RADIO MENU SEBAGAI KOTAK BERSIH TANPA TITIK POIN */
 [data-testid="stSidebar"] [data-testid="stRadio"] div[role="radiogroup"] {
     gap: 8px;
 }
@@ -200,24 +181,23 @@ html, body, [class*="css"] {
     color: #1F2937 !important;
 }
 
-/* HILANGKAN IKON TITIK BULAT BAWAAN STREAMLIT PADA RADIO */
 [data-testid="stSidebar"] [data-testid="stRadio"] input[type="radio"] {
     display: none !important;
 }
 
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: #F5F3FF;
-    border-color: #8B5CF6;
+    background: #FFF0F3;
+    border-color: #FF738C;
     transform: translateX(3px);
 }
 
 [data-testid="stSidebar"] hr {
-    border-color: #D8B4FE !important;
+    border-color: #E2E8E4 !important;
 }
 
 /* SECTION TITLE */
 h1, h2, h3, h4, h5 {
-    color: #1F2937 !important;
+    color: #1D411F !important;
     font-weight: 700 !important;
 }
 
@@ -235,7 +215,7 @@ h1, h2, h3, h4, h5 {
 
 .metric-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 10px 24px rgba(139, 92, 246, 0.08);
+    box-shadow: 0 10px 24px rgba(0, 121, 68, 0.08);
 }
 
 .metric-label {
@@ -249,7 +229,7 @@ h1, h2, h3, h4, h5 {
 .metric-value {
     font-size: 24px;
     font-weight: 800;
-    color: #1F2937;
+    color: #1D411F;
     margin-top: 10px;
 }
 
@@ -275,20 +255,21 @@ h1, h2, h3, h4, h5 {
     box-shadow: 0 4px 18px rgba(0,0,0,0.03);
 }
 
-/* BUTTON */
+/* BUTTON DENGAN PALET PINK & GREEN */
 .stButton > button, .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #8B5CF6 0%, #6D28D9 100%);
+    background: linear-gradient(135deg, #007944 0%, #1D411F 100%);
     color: #FFFFFF;
     border: none;
     border-radius: 12px;
     padding: 10px 18px;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 121, 68, 0.2);
     transition: 0.2s ease;
 }
 
 .stButton > button:hover, .stFormSubmitButton > button:hover {
-    background: linear-gradient(135deg, #7C3AED 0%, #5B21B6 100%);
+    background: linear-gradient(135deg, #FF738C 0%, #F35588 100%);
+    color: #FFFFFF;
     transform: translateY(-2px);
 }
 </style>
@@ -303,7 +284,6 @@ if 'nav_selection' not in st.session_state:
 # ==========================================
 import streamlit.components.v1 as components
 
-# Komponen JavaScript untuk mendapatkan waktu lokal perangkat pengakses secara real-time
 time_html = """
 <div id="realtime-clock" style="font-family: 'Plus Jakarta Sans', sans-serif;"></div>
 <script>
@@ -326,10 +306,9 @@ function updateClock() {
     
     const dateStr = dayName + ", " + dateNum + " " + monthName + " " + year;
     
-    // Kirim balik ke Streamlit jika diperlukan atau render langsung
     const el = document.getElementById('realtime-clock');
     if(el) {
-        el.innerHTML = '<div style="background: #FFFFFF; border: 1px solid #E5E7EB; padding: 24px 32px; border-radius: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.02); margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;"><div><p style="font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: #1F2937; margin: 0 0 4px 0; letter-spacing: -0.6px;">' + sapaan + ', Ibu Adinda Arum Sari!</p><p style="font-size: 13px; color: #6B7280; font-weight: 600; margin: 0;">' + dateStr + '</p></div><div style="font-size: 32px;">👋</div></div>';
+        el.innerHTML = '<div style="background: #FFFFFF; border: 1px solid #E2E8E4; padding: 24px 32px; border-radius: 22px; box-shadow: 0 4px 18px rgba(0,0,0,0.02); margin-bottom: 22px; display: flex; align-items: center; justify-content: space-between;"><div><p style="font-size: clamp(20px, 2.2vw, 26px); font-weight: 800; color: #1F2937; margin: 0 0 4px 0; letter-spacing: -0.6px;">' + sapaan + ', Ibu Adinda Arum Sari!</p><p style="font-size: 13px; color: #4B5563; font-weight: 600; margin: 0;">' + dateStr + '</p></div><div style="font-size: 32px;">👋</div></div>';
     }
 }
 updateClock();
@@ -348,15 +327,15 @@ st.markdown(f"""
     <div style="display: flex; align-items: center; gap: 22px;">
         <img src="{logo_url}" class="hero-logo" alt="199 Kitchen Logo">
         <div>
-            <div style="font-size: 10px; font-weight: 800; color: #8B5CF6; letter-spacing: 1.2px; margin-bottom: 6px;">199 KITCHEN • SINGOSARI, MALANG</div>
+            <div style="font-size: 10px; font-weight: 800; color: #007944; letter-spacing: 1.2px; margin-bottom: 6px;">199 KITCHEN • SINGOSARI, MALANG</div>
             <p class="hero-title">Sweet & Savory Supply Chain System</p>
             <p class="hero-sub">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
         </div>
     </div>
     <div style="display: flex; gap: 6px; align-items: center;">
-        <span style="width: 8px; height: 8px; background: #8B5CF6; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 8px; height: 8px; background: #C4B5FD; border-radius: 50%; display: inline-block;"></span>
-        <span style="width: 8px; height: 8px; background: #E9D5FF; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 8px; height: 8px; background: #007944; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 8px; height: 8px; background: #B1CC6C; border-radius: 50%; display: inline-block;"></span>
+        <span style="width: 8px; height: 8px; background: #FF99B3; border-radius: 50%; display: inline-block;"></span>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -406,9 +385,9 @@ skeleton_placeholder.empty()
 # ==========================================
 st.sidebar.markdown(f"""
 <div class="sidebar-brand-card">
-    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #8B5CF6;">
+    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #007944;">
     <div style="color: #1F2937; font-size: 14px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #6B7280; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+    <div style="color: #4B5563; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -474,9 +453,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c1:
         st.markdown(f'''
-            <div class="metric-card" style="border-left: 5px solid #8B5CF6;">
+            <div class="metric-card" style="border-left: 5px solid #007944;">
                 <div class="metric-label">💰 Total Omzet Gross</div>
-                <div class="metric-value" style="color: #6D28D9;">Rp {total_omzet:,.0f}</div>
+                <div class="metric-value" style="color: #007944;">Rp {total_omzet:,.0f}</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("👁️ Buka Log Penjualan", use_container_width=True, key="btn_sales_log"):
@@ -485,9 +464,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c2:
         st.markdown(f'''
-            <div class="metric-card" style="border-left: 5px solid #3B82F6;">
+            <div class="metric-card" style="border-left: 5px solid #71A95A;">
                 <div class="metric-label">🧾 Total Transaksi</div>
-                <div class="metric-value" style="color: #1D4ED8;">{total_trx} Pesanan</div>
+                <div class="metric-value" style="color: #1D411F;">{total_trx} Pesanan</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("👁️ Lihat Detail Transaksi", use_container_width=True, key="btn_trx_detail"):
@@ -495,8 +474,8 @@ if menu_option == "📊 Beranda (Dashboard)":
             st.rerun()
 
     with c3:
-        border_color = "#EF4444" if critical_items > 0 else "#10B981"
-        val_color = "#B91C1C" if critical_items > 0 else "#047857"
+        border_color = "#FF738C" if critical_items > 0 else "#007944"
+        val_color = "#F35588" if critical_items > 0 else "#007944"
         st.markdown(f'''
             <div class="metric-card" style="border-left: 5px solid {border_color};">
                 <div class="metric-label">📦 Bahan Perlu Reorder</div>
@@ -509,9 +488,9 @@ if menu_option == "📊 Beranda (Dashboard)":
 
     with c4:
         st.markdown('''
-            <div class="metric-card" style="border-left: 5px solid #F59E0B;">
+            <div class="metric-card" style="border-left: 5px solid #FF99B3;">
                 <div class="metric-label">🛍️ Kanal Penjualan</div>
-                <div class="metric-value" style="color: #B45309;">5 Channel</div>
+                <div class="metric-value" style="color: #F35588;">5 Channel</div>
             </div>
         ''', unsafe_allow_html=True)
         if st.button("🚛 Cek Database Supplier", use_container_width=True, key="btn_supp_check"):
@@ -528,7 +507,7 @@ if menu_option == "📊 Beranda (Dashboard)":
             omzet_cols = [c for c in df_sales.columns if "omzet" in c.lower() or "total" in c.lower()]
             if kanal_cols and omzet_cols:
                 chart_data = df_sales.groupby(kanal_cols[0])[omzet_cols[0]].sum().reset_index()
-                st.bar_chart(chart_data.set_index(kanal_cols[0]), color="#8B5CF6")
+                st.bar_chart(chart_data.set_index(kanal_cols[0]), color="#007944")
             else:
                 st.dataframe(df_sales, use_container_width=True)
         else:
@@ -555,11 +534,11 @@ elif menu_option == "📦 Inventory FEFO & Alerts":
         if status_col:
             def highlight_status(val):
                 if 'CRITICAL' in str(val).upper():
-                    return 'background-color: #FEE2E2; color: #991B1B; font-weight: 700;'
+                    return 'background-color: #FFD1D8; color: #9B2226; font-weight: 700;'
                 elif 'WARNING' in str(val).upper():
-                    return 'background-color: #FEF3C7; color: #92400E; font-weight: 700;'
+                    return 'background-color: #FFF0D9; color: #9B7135; font-weight: 700;'
                 elif 'SAFE' in str(val).upper():
-                    return 'background-color: #D1FAE5; color: #065F46; font-weight: 700;'
+                    return 'background-color: #D8F3DC; color: #1B4332; font-weight: 700;'
                 return ''
 
             st.dataframe(df_fefo.style.map(highlight_status, subset=[status_col]), use_container_width=True)
