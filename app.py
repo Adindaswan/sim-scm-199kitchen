@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # ==========================================
-# 2. MODERN PASTEL UI + ANIMATIONS - 199 KITCHEN
+# 2. MODERN PASTEL ENTERPRISE UI - 199 KITCHEN
 # ==========================================
 st.markdown("""
 <style>
@@ -26,9 +26,9 @@ st.markdown("""
     --sage: #E5F1E8;
     --sage-dark: #527B60;
     --sage-deep: #344F3D;
-    --text: #35443A;
-    --muted: #87938A;
-    --border: #E9EEE9;
+    --text: #2C3E35;
+    --muted: #7E8C82;
+    --border: #E4EAE2;
 }
 
 /* GLOBAL */
@@ -37,7 +37,7 @@ html, body, [class*="css"] {
 }
 
 .stApp {
-    background: #FAFBF8;
+    background: #F7F9F6;
     color: var(--text);
 }
 
@@ -64,71 +64,71 @@ html, body, [class*="css"] {
 
 .skeleton-card {
     height: 115px;
-    border-radius: 19px;
-    border: 1px solid #E9EEE9;
-    background: #F2F5F1;
-    background-image: linear-gradient(90deg, #F2F5F1 0px, #FFFFFF 50%, #F2F5F1 100%);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #EEF3ED;
+    background-image: linear-gradient(90deg, #EEF3ED 0px, #FFFFFF 50%, #EEF3ED 100%);
     background-size: 1000px 100%;
     animation: shimmer 1.8s infinite linear;
 }
 
 .skeleton-chart {
     height: 260px;
-    border-radius: 19px;
-    border: 1px solid #E9EEE9;
-    background: #F2F5F1;
-    background-image: linear-gradient(90deg, #F2F5F1 0px, #FFFFFF 50%, #F2F5F1 100%);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    background: #EEF3ED;
+    background-image: linear-gradient(90deg, #EEF3ED 0px, #FFFFFF 50%, #EEF3ED 100%);
     background-size: 1000px 100%;
     animation: shimmer 1.8s infinite linear;
 }
 
 /* ==========================================
-   WELCOME GREETING CARD (SESUAI REFERENSI)
+   WELCOME GREETING CARD (PROFESSIONAL)
 ========================================== */
 .welcome-card {
     background: #FFFFFF;
-    border: 1px solid #EAEFE8;
-    padding: 28px 32px;
+    border: 1px solid var(--border);
+    padding: 26px 30px;
     border-radius: 20px;
-    box-shadow: 0 4px 20px rgba(70,100,70,0.04);
-    margin-bottom: 26px;
+    box-shadow: 0 4px 20px rgba(50,80,50,0.03);
+    margin-bottom: 24px;
 }
 
 .welcome-title {
-    font-size: clamp(22px, 2.5vw, 30px);
+    font-size: clamp(20px, 2.3vw, 28px);
     font-weight: 800;
-    color: #344F3D;
-    margin: 0 0 6px 0;
-    letter-spacing: -0.8px;
+    color: var(--sage-deep);
+    margin: 0 0 4px 0;
+    letter-spacing: -0.6px;
 }
 
 .welcome-date {
-    font-size: 13.5px;
-    color: #718274;
+    font-size: 13px;
+    color: var(--muted);
     font-weight: 600;
     margin: 0;
 }
 
 /* PREMIUM MAIN HEADER WITH LOGO */
 .main-header {
-    background: linear-gradient(120deg, #FFF1E5 0%, #F5F4E9 48%, #E7F2E8 100%);
-    padding: 28px 32px;
+    background: linear-gradient(120deg, #FFF4EC 0%, #F5F6EE 50%, #E7EFE8 100%);
+    padding: 26px 30px;
     border-radius: 20px;
-    border: 1px solid #EAEDE4;
+    border: 1px solid var(--border);
     margin-bottom: 24px;
-    box-shadow: 0 6px 20px rgba(70,100,70,0.04);
+    box-shadow: 0 4px 18px rgba(50,80,50,0.03);
     display: flex;
     align-items: center;
     gap: 20px;
 }
 
 .header-logo {
-    width: 75px;
-    height: 75px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #73977B;
-    box-shadow: 0 4px 12px rgba(82, 123, 96, 0.2);
+    border: 3px solid var(--sage-dark);
+    box-shadow: 0 4px 12px rgba(82, 123, 96, 0.15);
     flex-shrink: 0;
 }
 
@@ -138,39 +138,43 @@ html, body, [class*="css"] {
 
 .header-tag {
     display: inline-block;
-    background: rgba(255,255,255,0.75);
-    color: #62816A;
+    background: rgba(255,255,255,0.8);
+    color: var(--sage-dark);
     padding: 5px 12px;
-    border-radius: 30px;
-    font-size: 9.5px;
+    border-radius: 20px;
+    font-size: 9px;
     font-weight: 800;
     letter-spacing: 1.2px;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
 }
 
 .main-title {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: clamp(20px, 2.2vw, 28px) !important;
+    font-size: clamp(18px, 2vw, 26px) !important;
     font-weight: 800 !important;
-    color: #344F3D !important;
+    color: var(--sage-deep) !important;
     margin: 0 !important;
     line-height: 1.3 !important;
-    letter-spacing: -0.8px !important;
+    letter-spacing: -0.6px !important;
 }
 
 .sub-title {
-    font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 12px !important;
+    font-size: 11.5px !important;
     font-weight: 500 !important;
-    color: #718274 !important;
-    margin-top: 6px !important;
+    color: var(--muted) !important;
+    margin-top: 4px !important;
     margin-bottom: 0 !important;
 }
 
-/* SIDEBAR */
+/* SIDEBAR STYLING MIRIP CONTOH REFERENSI */
 [data-testid="stSidebar"] {
-    background: #F3F7F1;
-    border-right: 1px solid #E4EBE1;
+    background: #1B3024;
+    border-right: 1px solid #243D2F;
+}
+
+[data-testid="stSidebar"] p, 
+[data-testid="stSidebar"] span, 
+[data-testid="stSidebar"] label {
+    color: #E2EFE5 !important;
 }
 
 [data-testid="stSidebar"] > div:first-child {
@@ -178,17 +182,48 @@ html, body, [class*="css"] {
 }
 
 .sidebar-brand {
-    background: linear-gradient(135deg, #E4F0E5, #FFF0E6);
-    padding: 15px;
-    border-radius: 17px;
-    margin-bottom: 15px;
-    border: 1px solid #E5EBE2;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 14px;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
     text-align: center;
+}
+
+/* STYLING SEARCH BAR & RADIO MENU DI SIDEBAR */
+[data-testid="stSidebar"] .stTextInput input {
+    background: #243D2F !important;
+    border: 1px solid #335442 !important;
+    color: #FFFFFF !important;
+    border-radius: 10px;
+    font-size: 13px;
+}
+
+[data-testid="stSidebar"] .stTextInput input::placeholder {
+    color: #A3B5A8 !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label {
+    font-size: 13.5px;
+    font-weight: 600;
+    padding: 10px 14px;
+    border-radius: 10px;
+    color: #D1E2D5 !important;
+    transition: all 0.2s ease;
+}
+
+[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: #FFFFFF !important;
+}
+
+[data-testid="stSidebar"] hr {
+    border-color: #2D4D3C !important;
 }
 
 /* SECTION TITLE */
 h1, h2, h3, h4, h5 {
-    color: #344F3D !important;
+    color: var(--sage-deep) !important;
     font-weight: 700 !important;
 }
 
@@ -196,69 +231,69 @@ h1, h2, h3, h4, h5 {
 .metric-card {
     position: relative;
     background: #FFFFFF;
-    border-radius: 19px;
-    padding: 23px;
-    border: 1px solid #E9EEE9;
-    box-shadow: 0 4px 15px rgba(60,80,60,0.035);
-    transition: transform 0.35s ease, box-shadow 0.35s ease;
-    min-height: 115px;
+    border-radius: 18px;
+    padding: 22px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 15px rgba(50,80,50,0.03);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-height: 110px;
 }
 
 .metric-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(82, 123, 96, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 22px rgba(82, 123, 96, 0.08);
 }
 
 .metric-label {
-    font-size: 10px;
-    color: #89958C;
+    font-size: 9.5px;
+    color: var(--muted);
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 0.8px;
 }
 
 .metric-value {
-    font-size: 24px;
+    font-size: 22px;
     font-weight: 800;
-    color: #344F3D;
-    margin-top: 10px;
+    color: var(--sage-deep);
+    margin-top: 8px;
 }
 
 /* DATAFRAME & FORM */
 [data-testid="stDataFrame"] {
-    border: 1px solid #E5ECE4;
-    border-radius: 15px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
     overflow: hidden;
 }
 
 .stTextInput input, .stNumberInput input, .stTextArea textarea {
-    border-radius: 11px;
-    border-color: #DFE8DF;
-    background: #FCFDFC;
+    border-radius: 10px;
+    border-color: #D3E0D5;
+    background: #FCFDFB;
 }
 
 [data-testid="stForm"] {
     background: #FFFFFF;
-    padding: 26px;
-    border-radius: 20px;
-    border: 1px solid #E8EEE7;
-    box-shadow: 0 5px 20px rgba(60,80,60,0.04);
+    padding: 24px;
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 18px rgba(50,80,50,0.03);
 }
 
 /* BUTTON */
 .stButton > button, .stFormSubmitButton > button {
-    background: linear-gradient(135deg, #73977B 0%, #5D8266 100%);
+    background: linear-gradient(135deg, #73977B 0%, #527B60 100%);
     color: #FFFFFF;
     border: none;
-    border-radius: 12px;
-    padding: 10px 18px;
+    border-radius: 10px;
+    padding: 9px 16px;
     font-weight: 700;
-    box-shadow: 0 4px 12px rgba(82, 123, 96, 0.22);
-    transition: 0.25s ease;
+    box-shadow: 0 4px 10px rgba(82, 123, 96, 0.2);
+    transition: 0.2s ease;
 }
 
 .stButton > button:hover, .stFormSubmitButton > button:hover {
-    background: linear-gradient(135deg, #5D8266 0%, #486B51 100%);
+    background: linear-gradient(135deg, #527B60 0%, #344F3D 100%);
     transform: translateY(-2px);
 }
 </style>
@@ -266,10 +301,10 @@ h1, h2, h3, h4, h5 {
 
 # Session State Navigasi
 if 'nav_selection' not in st.session_state:
-    st.session_state.nav_selection = "📊 Dashboard Analytics"
+    st.session_state.nav_selection = "📊 Beranda (Dashboard)"
 
 # ==========================================
-# 3. LOGIKA WAKTU & SAPAAN PENGAKSES (IBU ADINDA ARUM SARI)
+# 3. LOGIKA WAKTU, TANGGAL & SAPAAN PENGAKSES
 # ==========================================
 current_hour = datetime.now().hour
 if 4 <= current_hour < 11:
@@ -281,7 +316,6 @@ elif 15 <= current_hour < 18:
 else:
     sapaan = "Selamat Malam"
 
-# Format Tanggal Indonesia
 days_id = {"Sun": "Minggu", "Mon": "Senin", "Tue": "Selasa", "Wed": "Rabu", "Thu": "Kamis", "Fri": "Jumat", "Sat": "Sabtu"}
 months_id = {"Jan": "Januari", "Feb": "Februari", "Mar": "Maret", "Apr": "April", "May": "Mei", "Jun": "Juni", "Jul": "Juli", "Aug": "Agustus", "Sep": "September", "Oct": "Oktober", "Nov": "November", "Dec": "Desember"}
 
@@ -308,7 +342,7 @@ st.markdown(f"""
     <img src="{logo_url}" class="header-logo" alt="199 Kitchen Logo">
     <div class="header-content">
         <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
-        <p class="main-title">Sweet & Savory Management System</p>
+        <p class="main-title">Sweet & Savory Supply Chain System</p>
         <p class="sub-title">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
     </div>
 </div>
@@ -356,34 +390,47 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 7. SIDEBAR NAVIGATION & TOMBOL COLLAPSE WARNA HIJAU
+# 7. SIDEBAR NAVIGATION (DENGAN CARI MENU & TOMBOL COLLAPSE HIJAU)
 # ==========================================
 st.sidebar.markdown(f"""
 <div class="sidebar-brand">
-    <img src="{logo_url}" width="75" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
-    <div style="color: #405C46; font-size: 15px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #849387; font-size: 9px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+    <img src="{logo_url}" width="65" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #73977B;">
+    <div style="color: #FFFFFF; font-size: 14px; font-weight: 800;">199 KITCHEN</div>
+    <div style="color: #A3B5A8; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Tombol Sembunyikan Panel (Collapse Sidebar) warna hijau ikon tombol selalu terlihat
+# Tombol Sembunyikan Panel (Collapse Sidebar) warna hijau ikon selalu terlihat
 if st.sidebar.button("☰ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
     st.rerun()
 
-st.sidebar.markdown("### 📌 Navigasi Modul")
+st.sidebar.markdown("---")
 
-menu_options = [
-    "📊 Dashboard Analytics",
+# Kotak Pencarian Menu (Cari Menu) seperti pada gambar referensi
+search_query = st.sidebar.text_input("Cari Menu", placeholder="Ketik menu...", label_visibility="collapsed")
+
+# Daftar seluruh modul
+all_menu_options = [
+    "📊 Beranda (Dashboard)",
     "📦 Inventory FEFO & Alerts",
     "📋 Master BOM & Resep HPP",
     "🛒 Form Sales (Input Webhook)",
     "🚛 Database Supplier"
 ]
 
+# Filter menu jika diketik di kotak pencarian
+if search_query:
+    menu_options = [m for m in all_menu_options if search_query.lower() in m.lower()]
+    if not menu_options:
+        menu_options = all_menu_options
+        st.sidebar.caption("⚠️ Menu tidak ditemukan")
+else:
+    menu_options = all_menu_options
+
 menu_option = st.sidebar.radio(
     "Pilih Menu:",
     menu_options,
-    index=menu_options.index(st.session_state.nav_selection) if st.session_state.nav_selection in menu_options else 0,
+    index=0 if st.session_state.nav_selection in menu_options else 0,
     label_visibility="collapsed"
 )
 
@@ -393,14 +440,14 @@ st.sidebar.markdown("---")
 st.sidebar.caption("🟢 Google Sheets: Connected")
 st.sidebar.caption("🟢 Make.com Webhook: Active")
 st.sidebar.markdown("---")
-st.sidebar.markdown("<p style='font-size: 11px; color: #89958C;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
+st.sidebar.markdown("<p style='font-size: 10.5px; color: #8FA395;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
 
 # ==========================================
-# 8. MODUL 1: DASHBOARD ANALYTICS
+# 8. MODUL 1: BERANDA (DASHBOARD ANALYTICS)
 # ==========================================
-if menu_option == "📊 Dashboard Analytics":
+if menu_option == "📊 Beranda (Dashboard)":
 
-    st.markdown("### 📊 Ringkasan Performa & Operasional")
+    st.markdown("### 📊 Beranda & Ringkasan Performa")
     st.caption("Klik tombol di bawah setiap kartu ringkasan untuk langsung membuka data detail terkait.")
 
     total_omzet = 0
