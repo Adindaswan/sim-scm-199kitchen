@@ -161,6 +161,7 @@ html, body, [class*="css"] {
     border-radius: 10px;
     transition: background 0.25s ease, transform 0.2s ease;
 }
+
 [data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
     background: rgba(255, 255, 255, 0.7);
     transform: translateX(4px);
@@ -310,7 +311,7 @@ try:
     SPREADSHEET_ID = st.secrets["spreadsheet"]["spreadsheet_id"]
     MAKE_WEBHOOK_URL = st.secrets["make_webhook"]["url"]
 except Exception as e:
-    st.error("⚠️ Secrets Belum Dikonfigurasi! Pastikan [spreadsheet] dan [make_webhook] sudah diatur di Advanced Settings Streamlit Cloud.")
+    st.error("⚠️ **Secrets Belum Dikonfigurasi!** Pastikan `[spreadsheet]` dan `[make_webhook]` sudah diatur di Advanced Settings Streamlit Cloud.")
     st.stop()
 
 # ==========================================
@@ -403,7 +404,8 @@ if menu_option == "📊 Dashboard Analytics":
         status_cols = [c for c in df_fefo.columns if "status" in c.lower() or "action" in c.lower() or "fefo" in c.lower()]
         if status_cols:
             critical_items = len(df_fefo[df_fefo[status_cols[0]].astype(str).str.contains("CRITICAL", case=False, na=False)])
-            # METRIC CARDS DENGAN TOMBOL AKSI INTERAKTIF
+
+    # METRIC CARDS DENGAN TOMBOL AKSI INTERAKTIF
     c1, c2, c3, c4 = st.columns(4)
 
     with c1:
@@ -470,7 +472,7 @@ if menu_option == "📊 Dashboard Analytics":
 
     with col_g2:
         st.markdown("##### 🔮 Forecast & Rekomendasi Belanja")
-        st.info("💡 Moving Average Insight: Persiapan stok bahan baku akhir pekan difokuskan pada peningkatan ketersediaan *Daging Ayam Fillet* dan *Saus Mentai* seiring tren kenaikan pesanan.")
+        st.info("💡 **Moving Average Insight:** Persiapan stok bahan baku akhir pekan difokuskan pada peningkatan ketersediaan *Daging Ayam Fillet* dan *Saus Mentai* seiring tren kenaikan pesanan.")
 
 # ==========================================
 # 8. MODUL 2: INVENTORY FEFO
@@ -485,7 +487,8 @@ elif menu_option == "📦 Inventory FEFO & Alerts":
             if "status" in col.lower() or "action" in col.lower() or "fefo" in col.lower():
                 status_col = col
                 break
-                if status_col:
+
+        if status_col:
             def highlight_status(val):
                 if 'CRITICAL' in str(val).upper():
                     return 'background-color: #FCE4E4; color: #A34343; font-weight: 700;'
@@ -516,13 +519,13 @@ elif menu_option == "📋 Master BOM & Resep HPP":
         selected_menu = st.selectbox("🎯 Pilih Menu 199 Kitchen:", menu_list)
 
         recipe_df = df_bom[df_bom[menu_col] == selected_menu]
-        st.markdown(f"##### 🍽️ Rincian Komposisi Bahan untuk: {selected_menu}")
+        st.markdown(f"##### 🍽️ Rincian Komposisi Bahan untuk: **{selected_menu}**")
         st.dataframe(recipe_df, use_container_width=True)
 
         hpp_cols = [c for c in df_bom.columns if "hpp" in c.lower() or "est." in c.lower()]
         if hpp_cols:
             total_hpp = pd.to_numeric(recipe_df[hpp_cols[-1]], errors='coerce').sum()
-            st.success(f"💰 Estimasi Total HPP per Porsi: Rp {total_hpp:,.0f}")
+            st.success(f"💰 **Estimasi Total HPP per Porsi:** **Rp {total_hpp:,.0f}**")
     else:
         st.warning("Data Master BOM tidak tersedia.")
 
@@ -559,6 +562,7 @@ elif menu_option == "🛒 Form Sales (Input Webhook)":
 
         st.markdown("<br>", unsafe_allow_html=True)
         submit_button = st.form_submit_button("🚀 Kirim Transaksi ke Spreadsheet", use_container_width=True)
+
         if submit_button:
             payload = {
                 "id_transaksi": id_trx,
@@ -576,7 +580,7 @@ elif menu_option == "🛒 Form Sales (Input Webhook)":
                 res = requests.post(MAKE_WEBHOOK_URL, json=payload, headers={"Content-Type": "application/json"})
                 if res.status_code == 200:
                     st.balloons()
-                    st.success(f"✅ Transaksi {id_trx} Berhasil Tercatat!")
+                    st.success(f"✅ Transaksi **{id_trx}** Berhasil Tercatat!")
                     st.json(payload)
                 else:
                     st.error(f"Gagal mengirim ke Webhook. Status Code: {res.status_code}")
@@ -601,4 +605,3 @@ elif menu_option == "🚛 Database Supplier":
         st.dataframe(df_supp, use_container_width=True)
     else:
         st.info("Data supplier belum tersedia.")
-        
