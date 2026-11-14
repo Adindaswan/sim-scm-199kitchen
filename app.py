@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # ==========================================
-# 2. MODERN PASTEL UI + ANIMATIONS - 199 KITCHEN
+# 2. MODERN PASTEL UI + CUSTOM COLLAPSE BUTTON + LOGO HEADER
 # ==========================================
 st.markdown("""
 <style>
@@ -26,8 +26,6 @@ st.markdown("""
     --sage: #E5F1E8;
     --sage-dark: #527B60;
     --sage-deep: #344F3D;
-    --pink: #FCEAEC;
-    --lavender: #F1EAF9;
     --text: #35443A;
     --muted: #87938A;
     --border: #E9EEE9;
@@ -51,6 +49,28 @@ html, body, [class*="css"] {
     max-width: 1500px;
     padding-top: 2rem;
     padding-bottom: 3rem;
+}
+
+/* ==========================================
+   TOMBOL CIUTKAN / COLLAPSE SIDEBAR YANG MENCOLOK
+========================================== */
+[data-testid="collapsedControl"] {
+    background: #344F3D !important;
+    color: #FFFFFF !important;
+    border-radius: 50% !important;
+    box-shadow: 0 4px 12px rgba(52, 79, 61, 0.3) !important;
+    padding: 10px !important;
+    transition: all 0.25s ease !important;
+}
+
+[data-testid="collapsedControl"]:hover {
+    background: #527B60 !important;
+    transform: scale(1.1) !important;
+    box-shadow: 0 6px 16px rgba(52, 79, 61, 0.45) !important;
+}
+
+[data-testid="collapsedControl"] svg {
+    fill: #FFFFFF !important;
 }
 
 /* ==========================================
@@ -89,15 +109,18 @@ html, body, [class*="css"] {
 }
 
 /* ==========================================
-   PREMIUM MAIN HEADER
+   PREMIUM MAIN HEADER DENGAN LOGO
 ========================================== */
 .main-header {
     background: linear-gradient(120deg, #FFF1E5 0%, #F5F4E9 48%, #E7F2E8 100%);
-    padding: 36px 38px;
+    padding: 28px 36px;
     border-radius: 24px;
     border: 1px solid #EAEDE4;
     margin-bottom: 28px;
     box-shadow: 0 8px 25px rgba(70,100,70,0.055);
+    display: flex;
+    align-items: center;
+    gap: 24px;
     transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
 }
 
@@ -106,37 +129,51 @@ html, body, [class*="css"] {
     box-shadow: 0 12px 30px rgba(70,100,70,0.085);
 }
 
+.header-logo {
+    width: 85px;
+    height: 85px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #527B60;
+    box-shadow: 0 4px 12px rgba(52, 79, 61, 0.15);
+    flex-shrink: 0;
+}
+
+.header-content {
+    flex-grow: 1;
+}
+
 .header-tag {
     display: inline-block;
     background: rgba(255,255,255,0.75);
     color: #62816A;
-    padding: 7px 15px;
+    padding: 5px 12px;
     border-radius: 30px;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1.5px;
-    margin-bottom: 17px;
+    margin-bottom: 10px;
 }
 
 .main-title {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: clamp(26px, 3vw, 36px) !important;
+    font-size: clamp(24px, 2.5vw, 32px) !important;
     font-weight: 800 !important;
     color: #344F3D !important;
     margin: 0 !important;
     padding: 0 !important;
-    line-height: 1.35 !important;
-    letter-spacing: -1.2px !important;
+    line-height: 1.2 !important;
+    letter-spacing: -1px !important;
 }
 
 .sub-title {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 13px !important;
+    font-size: 12.5px !important;
     font-weight: 500 !important;
     color: #718274 !important;
-    margin-top: 12px !important;
+    margin-top: 8px !important;
     margin-bottom: 0 !important;
-    line-height: 1.9 !important;
+    line-height: 1.6 !important;
 }
 
 /* SIDEBAR */
@@ -179,7 +216,7 @@ html, body, [class*="css"] {
     color: #728477;
 }
 
-/* SIDEBAR BRAND + CARD HOVER */
+/* SIDEBAR BRAND */
 .sidebar-brand {
     background: linear-gradient(135deg, #E4F0E5, #FFF0E6);
     padding: 15px;
@@ -206,7 +243,7 @@ h3 {
 }
 
 /* ==========================================
-   METRIC CARDS + ENHANCED HOVER EFFECT
+   METRIC CARDS
 ========================================== */
 .metric-card {
     position: relative;
@@ -284,6 +321,19 @@ h3 {
     background: linear-gradient(135deg, #5D8266 0%, #486B51 100%);
     transform: translateY(-2px);
 }
+
+/* RESPONSIVE HEADER */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+    }
+    .header-logo {
+        width: 70px;
+        height: 70px;
+    }
+}
 </style>
 """, unsafe_allow_html=True)
 
@@ -294,13 +344,16 @@ if 'nav_selection' not in st.session_state:
     st.session_state.nav_selection = "📊 Dashboard Analytics"
 
 # ==========================================
-# 3. HEADER UTAMA
+# 3. HEADER UTAMA DENGAN LOGO DI SAMPING JUDUL
 # ==========================================
 st.markdown("""
 <div class="main-header">
-    <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
-    <p class="main-title">🍲 Welcome to 199 Kitchen!</p>
-    <p class="sub-title">Your Kitchen Business, Managed Smarter.<br>Sistem informasi manajemen stok, HPP, penjualan dan forecasting dalam satu dashboard.</p>
+    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png" class="header-logo">
+    <div class="header-content">
+        <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
+        <p class="main-title">🍲 Welcome to 199 Kitchen!</p>
+        <p class="sub-title">Your Kitchen Business, Managed Smarter. Sistem informasi manajemen stok, HPP, penjualan dan forecasting dalam satu dashboard.</p>
+    </div>
 </div>
 """, unsafe_allow_html=True)
 
@@ -350,9 +403,9 @@ skeleton_placeholder.empty()
 # ==========================================
 st.sidebar.markdown("""
 <div class="sidebar-brand">
-    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png" width="90" style="border-radius: 50%; margin-bottom: 8px;">
-    <div style="color: #405C46; font-size: 16px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #849387; font-size: 9px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png" width="80" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
+    <div style="color: #405C46; font-size: 15px; font-weight: 800;">199 KITCHEN</div>
+    <div style="color: #849387; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
 
