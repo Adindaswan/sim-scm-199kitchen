@@ -41,13 +41,9 @@ html, body, [class*="css"] {
     color: var(--text);
 }
 
-[data-testid="stHeader"] {
-    background: transparent;
-}
-
 .block-container {
     max-width: 1500px;
-    padding-top: 2rem;
+    padding-top: 1rem;
     padding-bottom: 3rem;
 }
 
@@ -87,23 +83,48 @@ html, body, [class*="css"] {
 }
 
 /* ==========================================
-   PREMIUM MAIN HEADER WITH LOGO
+   WELCOME GREETING CARD (SESUAI REFERENSI)
 ========================================== */
+.welcome-card {
+    background: #FFFFFF;
+    border: 1px solid #EAEFE8;
+    padding: 28px 32px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(70,100,70,0.04);
+    margin-bottom: 26px;
+}
+
+.welcome-title {
+    font-size: clamp(22px, 2.5vw, 30px);
+    font-weight: 800;
+    color: #344F3D;
+    margin: 0 0 6px 0;
+    letter-spacing: -0.8px;
+}
+
+.welcome-date {
+    font-size: 13.5px;
+    color: #718274;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* PREMIUM MAIN HEADER WITH LOGO */
 .main-header {
     background: linear-gradient(120deg, #FFF1E5 0%, #F5F4E9 48%, #E7F2E8 100%);
-    padding: 32px 36px;
-    border-radius: 24px;
+    padding: 28px 32px;
+    border-radius: 20px;
     border: 1px solid #EAEDE4;
-    margin-bottom: 28px;
-    box-shadow: 0 8px 25px rgba(70,100,70,0.055);
+    margin-bottom: 24px;
+    box-shadow: 0 6px 20px rgba(70,100,70,0.04);
     display: flex;
     align-items: center;
-    gap: 24px;
+    gap: 20px;
 }
 
 .header-logo {
-    width: 85px;
-    height: 85px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid #73977B;
@@ -119,32 +140,31 @@ html, body, [class*="css"] {
     display: inline-block;
     background: rgba(255,255,255,0.75);
     color: #62816A;
-    padding: 6px 14px;
+    padding: 5px 12px;
     border-radius: 30px;
-    font-size: 10px;
+    font-size: 9.5px;
     font-weight: 800;
-    letter-spacing: 1.5px;
-    margin-bottom: 10px;
+    letter-spacing: 1.2px;
+    margin-bottom: 8px;
 }
 
 .main-title {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: clamp(24px, 2.8vw, 34px) !important;
+    font-size: clamp(20px, 2.2vw, 28px) !important;
     font-weight: 800 !important;
     color: #344F3D !important;
     margin: 0 !important;
     line-height: 1.3 !important;
-    letter-spacing: -1px !important;
+    letter-spacing: -0.8px !important;
 }
 
 .sub-title {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: 12.5px !important;
+    font-size: 12px !important;
     font-weight: 500 !important;
     color: #718274 !important;
-    margin-top: 8px !important;
+    margin-top: 6px !important;
     margin-bottom: 0 !important;
-    line-height: 1.7 !important;
 }
 
 /* SIDEBAR */
@@ -154,7 +174,7 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] > div:first-child {
-    padding-top: 1.5rem;
+    padding-top: 1.2rem;
 }
 
 .sidebar-brand {
@@ -249,7 +269,37 @@ if 'nav_selection' not in st.session_state:
     st.session_state.nav_selection = "📊 Dashboard Analytics"
 
 # ==========================================
-# 3. HEADER UTAMA DENGAN LOGO
+# 3. LOGIKA WAKTU & SAPAAN PENGAKSES (IBU ADINDA ARUM SARI)
+# ==========================================
+current_hour = datetime.now().hour
+if 4 <= current_hour < 11:
+    sapaan = "Selamat Pagi"
+elif 11 <= current_hour < 15:
+    sapaan = "Selamat Siang"
+elif 15 <= current_hour < 18:
+    sapaan = "Selamat Sore"
+else:
+    sapaan = "Selamat Malam"
+
+# Format Tanggal Indonesia
+days_id = {"Sun": "Minggu", "Mon": "Senin", "Tue": "Selasa", "Wed": "Rabu", "Thu": "Kamis", "Fri": "Jumat", "Sat": "Sabtu"}
+months_id = {"Jan": "Januari", "Feb": "Februari", "Mar": "Maret", "Apr": "April", "May": "Mei", "Jun": "Juni", "Jul": "Juli", "Aug": "Agustus", "Sep": "September", "Oct": "Oktober", "Nov": "November", "Dec": "Desember"}
+
+now = datetime.now()
+day_name = days_id.get(now.strftime("%a"), now.strftime("%A"))
+month_name = months_id.get(now.strftime("%b"), now.strftime("%B"))
+tanggal_str = f"{day_name}, {now.day} {month_name} {now.year}"
+
+# Tampilkan Kartu Sapaan
+st.markdown(f"""
+<div class="welcome-card">
+    <p class="welcome-title">{sapaan}, Ibu Adinda Arum Sari!</p>
+    <p class="welcome-date">{tanggal_str}</p>
+</div>
+""", unsafe_allow_html=True)
+
+# ==========================================
+# 4. HEADER UTAMA DENGAN LOGO
 # ==========================================
 logo_url = "https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png"
 
@@ -258,14 +308,14 @@ st.markdown(f"""
     <img src="{logo_url}" class="header-logo" alt="199 Kitchen Logo">
     <div class="header-content">
         <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
-        <p class="main-title">Welcome to 199 Kitchen, Sweet & Savory!</p>
+        <p class="main-title">Sweet & Savory Management System</p>
         <p class="sub-title">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
 
 # ==========================================
-# 4. PENGAMAN SECRETS CREDENTIALS
+# 5. PENGAMAN SECRETS CREDENTIALS
 # ==========================================
 try:
     SPREADSHEET_ID = st.secrets["spreadsheet"]["spreadsheet_id"]
@@ -275,7 +325,7 @@ except Exception as e:
     st.stop()
 
 # ==========================================
-# 5. LOAD DATA DARI GOOGLE SHEETS + SKELETON
+# 6. LOAD DATA DARI GOOGLE SHEETS + SKELETON
 # ==========================================
 @st.cache_data(ttl=20)
 def load_data_from_sheets():
@@ -306,18 +356,18 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 6. SIDEBAR NAVIGATION & TOMBOL CIUTKAN PANEL
+# 7. SIDEBAR NAVIGATION & TOMBOL COLLAPSE WARNA HIJAU
 # ==========================================
 st.sidebar.markdown(f"""
 <div class="sidebar-brand">
-    <img src="{logo_url}" width="80" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
-    <div style="color: #405C46; font-size: 16px; font-weight: 800;">199 KITCHEN</div>
+    <img src="{logo_url}" width="75" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
+    <div style="color: #405C46; font-size: 15px; font-weight: 800;">199 KITCHEN</div>
     <div style="color: #849387; font-size: 9px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
 
-# Tombol interaktif warna hijau untuk menyembunyikan / ciutkan panel
-if st.sidebar.button("◀️ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
+# Tombol Sembunyikan Panel (Collapse Sidebar) warna hijau ikon tombol selalu terlihat
+if st.sidebar.button("☰ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
     st.rerun()
 
 st.sidebar.markdown("### 📌 Navigasi Modul")
@@ -346,7 +396,7 @@ st.sidebar.markdown("---")
 st.sidebar.markdown("<p style='font-size: 11px; color: #89958C;'>Made with ❤️ for 199 Kitchen</p>", unsafe_allow_html=True)
 
 # ==========================================
-# 7. MODUL 1: DASHBOARD ANALYTICS
+# 8. MODUL 1: DASHBOARD ANALYTICS
 # ==========================================
 if menu_option == "📊 Dashboard Analytics":
 
@@ -438,7 +488,7 @@ if menu_option == "📊 Dashboard Analytics":
         st.info("💡 **Moving Average Insight:** Persiapan stok bahan baku akhir pekan difokuskan pada peningkatan ketersediaan *Daging Ayam Fillet* dan *Saus Mentai* seiring tren kenaikan pesanan.")
 
 # ==========================================
-# 8. MODUL 2: INVENTORY FEFO
+# 9. MODUL 2: INVENTORY FEFO
 # ==========================================
 elif menu_option == "📦 Inventory FEFO & Alerts":
     st.markdown("### 📦 Monitoring Stok Bahan Baku (FEFO)")
@@ -468,7 +518,7 @@ elif menu_option == "📦 Inventory FEFO & Alerts":
         st.warning("Tabel Inventory FEFO kosong.")
 
 # ==========================================
-# 9. MODUL 3: MASTER BOM & RESEP HPP
+# 10. MODUL 3: MASTER BOM & RESEP HPP
 # ==========================================
 elif menu_option == "📋 Master BOM & Resep HPP":
     st.markdown("### 📋 Standar Resep & Kalkulasi HPP per Menu")
@@ -493,7 +543,7 @@ elif menu_option == "📋 Master BOM & Resep HPP":
         st.warning("Data Master BOM tidak tersedia.")
 
 # ==========================================
-# 10. MODUL 4: FORM SALES & TRIGGER WEBHOOK
+# 11. MODUL 4: FORM SALES & TRIGGER WEBHOOK
 # ==========================================
 elif menu_option == "🛒 Form Sales (Input Webhook)":
     st.markdown("### 🛒 Input Transaksi & Sinkronisasi Otomatis")
@@ -558,7 +608,7 @@ elif menu_option == "🛒 Form Sales (Input Webhook)":
         st.info("Belum ada data Sales Log.")
 
 # ==========================================
-# 11. MODUL 5: DATABASE SUPPLIER
+# 12. MODUL 5: DATABASE SUPPLIER
 # ==========================================
 elif menu_option == "🚛 Database Supplier":
     st.markdown("### 🚛 Database Pemasok Bahan Baku & Vendor")
