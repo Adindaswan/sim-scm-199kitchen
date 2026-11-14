@@ -15,7 +15,7 @@ st.set_page_config(
 )
 
 # ==========================================
-# 2. MODERN PASTEL UI + CUSTOM COLLAPSE BUTTON + LOGO HEADER
+# 2. MODERN PASTEL UI + ANIMATIONS - 199 KITCHEN
 # ==========================================
 st.markdown("""
 <style>
@@ -49,28 +49,6 @@ html, body, [class*="css"] {
     max-width: 1500px;
     padding-top: 2rem;
     padding-bottom: 3rem;
-}
-
-/* ==========================================
-   TOMBOL CIUTKAN / COLLAPSE SIDEBAR YANG MENCOLOK
-========================================== */
-[data-testid="collapsedControl"] {
-    background: #344F3D !important;
-    color: #FFFFFF !important;
-    border-radius: 50% !important;
-    box-shadow: 0 4px 12px rgba(52, 79, 61, 0.3) !important;
-    padding: 10px !important;
-    transition: all 0.25s ease !important;
-}
-
-[data-testid="collapsedControl"]:hover {
-    background: #527B60 !important;
-    transform: scale(1.1) !important;
-    box-shadow: 0 6px 16px rgba(52, 79, 61, 0.45) !important;
-}
-
-[data-testid="collapsedControl"] svg {
-    fill: #FFFFFF !important;
 }
 
 /* ==========================================
@@ -109,11 +87,11 @@ html, body, [class*="css"] {
 }
 
 /* ==========================================
-   PREMIUM MAIN HEADER DENGAN LOGO
+   PREMIUM MAIN HEADER WITH LOGO
 ========================================== */
 .main-header {
     background: linear-gradient(120deg, #FFF1E5 0%, #F5F4E9 48%, #E7F2E8 100%);
-    padding: 28px 36px;
+    padding: 32px 36px;
     border-radius: 24px;
     border: 1px solid #EAEDE4;
     margin-bottom: 28px;
@@ -121,12 +99,6 @@ html, body, [class*="css"] {
     display: flex;
     align-items: center;
     gap: 24px;
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease;
-}
-
-.main-header:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 30px rgba(70,100,70,0.085);
 }
 
 .header-logo {
@@ -134,8 +106,8 @@ html, body, [class*="css"] {
     height: 85px;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid #527B60;
-    box-shadow: 0 4px 12px rgba(52, 79, 61, 0.15);
+    border: 3px solid #73977B;
+    box-shadow: 0 4px 12px rgba(82, 123, 96, 0.2);
     flex-shrink: 0;
 }
 
@@ -147,7 +119,7 @@ html, body, [class*="css"] {
     display: inline-block;
     background: rgba(255,255,255,0.75);
     color: #62816A;
-    padding: 5px 12px;
+    padding: 6px 14px;
     border-radius: 30px;
     font-size: 10px;
     font-weight: 800;
@@ -157,12 +129,11 @@ html, body, [class*="css"] {
 
 .main-title {
     font-family: 'Plus Jakarta Sans', sans-serif !important;
-    font-size: clamp(24px, 2.5vw, 32px) !important;
+    font-size: clamp(24px, 2.8vw, 34px) !important;
     font-weight: 800 !important;
     color: #344F3D !important;
     margin: 0 !important;
-    padding: 0 !important;
-    line-height: 1.2 !important;
+    line-height: 1.3 !important;
     letter-spacing: -1px !important;
 }
 
@@ -173,7 +144,7 @@ html, body, [class*="css"] {
     color: #718274 !important;
     margin-top: 8px !important;
     margin-bottom: 0 !important;
-    line-height: 1.6 !important;
+    line-height: 1.7 !important;
 }
 
 /* SIDEBAR */
@@ -183,53 +154,16 @@ html, body, [class*="css"] {
 }
 
 [data-testid="stSidebar"] > div:first-child {
-    padding-top: 2rem;
+    padding-top: 1.5rem;
 }
 
-[data-testid="stSidebar"] p {
-    color: #536459;
-    font-weight: 500;
-}
-
-[data-testid="stSidebar"] [data-testid="stRadio"] label {
-    font-size: 13px;
-    font-weight: 600;
-    padding: 8px 10px;
-    border-radius: 10px;
-    transition: background 0.25s ease, transform 0.2s ease;
-}
-
-[data-testid="stSidebar"] [data-testid="stRadio"] label:hover {
-    background: rgba(255, 255, 255, 0.7);
-    transform: translateX(4px);
-}
-
-[data-testid="stSidebar"] [data-testid="stRadio"] > div {
-    gap: 7px;
-}
-
-[data-testid="stSidebar"] hr {
-    border-color: #DFE8DD;
-}
-
-[data-testid="stSidebar"] [data-testid="stCaptionContainer"] {
-    color: #728477;
-}
-
-/* SIDEBAR BRAND */
 .sidebar-brand {
     background: linear-gradient(135deg, #E4F0E5, #FFF0E6);
     padding: 15px;
     border-radius: 17px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     border: 1px solid #E5EBE2;
     text-align: center;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.sidebar-brand:hover {
-    transform: translateY(-3px) scale(1.01);
-    box-shadow: 0 8px 20px rgba(82, 123, 96, 0.1);
 }
 
 /* SECTION TITLE */
@@ -238,13 +172,7 @@ h1, h2, h3, h4, h5 {
     font-weight: 700 !important;
 }
 
-h3 {
-    letter-spacing: -0.5px;
-}
-
-/* ==========================================
-   METRIC CARDS
-========================================== */
+/* METRIC CARDS */
 .metric-card {
     position: relative;
     background: #FFFFFF;
@@ -252,17 +180,13 @@ h3 {
     padding: 23px;
     border: 1px solid #E9EEE9;
     box-shadow: 0 4px 15px rgba(60,80,60,0.035);
-    transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1),
-                border-color 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
     min-height: 115px;
-    overflow: hidden;
 }
 
 .metric-card:hover {
-    transform: translateY(-6px) scale(1.015);
-    box-shadow: 0 14px 30px rgba(82, 123, 96, 0.12);
-    border-color: #D2E2D5;
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(82, 123, 96, 0.1);
 }
 
 .metric-label {
@@ -278,22 +202,19 @@ h3 {
     font-weight: 800;
     color: #344F3D;
     margin-top: 10px;
-    letter-spacing: -0.7px;
 }
 
-/* DATAFRAME */
+/* DATAFRAME & FORM */
 [data-testid="stDataFrame"] {
     border: 1px solid #E5ECE4;
     border-radius: 15px;
     overflow: hidden;
 }
 
-/* INPUT & FORM */
 .stTextInput input, .stNumberInput input, .stTextArea textarea {
     border-radius: 11px;
     border-color: #DFE8DF;
     background: #FCFDFC;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 [data-testid="stForm"] {
@@ -314,45 +235,31 @@ h3 {
     font-weight: 700;
     box-shadow: 0 4px 12px rgba(82, 123, 96, 0.22);
     transition: 0.25s ease;
-    font-family: 'Plus Jakarta Sans', sans-serif;
 }
 
 .stButton > button:hover, .stFormSubmitButton > button:hover {
     background: linear-gradient(135deg, #5D8266 0%, #486B51 100%);
     transform: translateY(-2px);
 }
-
-/* RESPONSIVE HEADER */
-@media (max-width: 768px) {
-    .main-header {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px;
-    }
-    .header-logo {
-        width: 70px;
-        height: 70px;
-    }
-}
 </style>
 """, unsafe_allow_html=True)
 
-# ==========================================
-# Inisialisasi Session State untuk Navigasi Cepat
-# ==========================================
+# Session State Navigasi
 if 'nav_selection' not in st.session_state:
     st.session_state.nav_selection = "📊 Dashboard Analytics"
 
 # ==========================================
-# 3. HEADER UTAMA DENGAN LOGO DI SAMPING JUDUL
+# 3. HEADER UTAMA DENGAN LOGO
 # ==========================================
-st.markdown("""
+logo_url = "https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png"
+
+st.markdown(f"""
 <div class="main-header">
-    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png" class="header-logo">
+    <img src="{logo_url}" class="header-logo" alt="199 Kitchen Logo">
     <div class="header-content">
         <div class="header-tag">✨ 199 KITCHEN • SINGOSARI, MALANG</div>
-        <p class="main-title">🍲 Welcome to 199 Kitchen!</p>
-        <p class="sub-title">Your Kitchen Business, Managed Smarter. Sistem informasi manajemen stok, HPP, penjualan dan forecasting dalam satu dashboard.</p>
+        <p class="main-title">Welcome to 199 Kitchen, Sweet & Savory!</p>
+        <p class="sub-title">Sistem informasi manajemen stok, HPP, penjualan, dan forecasting terintegrasi Google Sheets & Make.com.</p>
     </div>
 </div>
 """, unsafe_allow_html=True)
@@ -399,15 +306,19 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 6. SIDEBAR NAVIGATION DENGAN LOGO
+# 6. SIDEBAR NAVIGATION & TOMBOL CIUTKAN PANEL
 # ==========================================
-st.sidebar.markdown("""
+st.sidebar.markdown(f"""
 <div class="sidebar-brand">
-    <img src="https://images.glints.com/unsafe/glints-dashboard.oss-ap-southeast-1.aliyuncs.com/company-logo/688dca2d5e43fca352724ab6c2f5aa76.png" width="80" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
-    <div style="color: #405C46; font-size: 15px; font-weight: 800;">199 KITCHEN</div>
-    <div style="color: #849387; font-size: 8.5px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
+    <img src="{logo_url}" width="80" style="border-radius: 50%; margin-bottom: 6px; border: 2px solid #527B60;">
+    <div style="color: #405C46; font-size: 16px; font-weight: 800;">199 KITCHEN</div>
+    <div style="color: #849387; font-size: 9px; letter-spacing: 1px; font-weight: 600;">SWEET & SAVORY</div>
 </div>
 """, unsafe_allow_html=True)
+
+# Tombol interaktif warna hijau untuk menyembunyikan / ciutkan panel
+if st.sidebar.button("◀️ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
+    st.rerun()
 
 st.sidebar.markdown("### 📌 Navigasi Modul")
 
@@ -426,7 +337,6 @@ menu_option = st.sidebar.radio(
     label_visibility="collapsed"
 )
 
-# Sinkronisasi state sidebar
 st.session_state.nav_selection = menu_option
 
 st.sidebar.markdown("---")
@@ -441,7 +351,7 @@ st.sidebar.markdown("<p style='font-size: 11px; color: #89958C;'>Made with ❤�
 if menu_option == "📊 Dashboard Analytics":
 
     st.markdown("### 📊 Ringkasan Performa & Operasional")
-    st.caption("Klik tombol di bawah setiap kartu ringkasan untuk langsung melihat detail data terkait.")
+    st.caption("Klik tombol di bawah setiap kartu ringkasan untuk langsung membuka data detail terkait.")
 
     total_omzet = 0
     total_trx = 0
@@ -458,7 +368,7 @@ if menu_option == "📊 Dashboard Analytics":
         if status_cols:
             critical_items = len(df_fefo[df_fefo[status_cols[0]].astype(str).str.contains("CRITICAL", case=False, na=False)])
 
-    # METRIC CARDS DENGAN TOMBOL AKSI INTERAKTIF
+    # METRIC CARDS DENGAN TOMBOL AKSI CEPAT
     c1, c2, c3, c4 = st.columns(4)
 
     with c1:
