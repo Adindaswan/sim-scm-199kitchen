@@ -601,3 +601,4 @@ elif menu_option == "🚛 Database Supplier":
         st.dataframe(df_supp, use_container_width=True)
     else:
         st.info("Data supplier belum tersedia.")
+        
