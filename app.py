@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import requests
 import time
+from datetime import datetime  # <-- PERBAIKAN: Menambahkan import datetime di sini
 
 # ==========================================
 # 1. KONFIGURASI HALAMAN
@@ -378,7 +379,7 @@ time.sleep(0.3)
 skeleton_placeholder.empty()
 
 # ==========================================
-# 7. SIDEBAR NAVIGATION (DENGAN TOMBOL COLLAPSE SOLID & KOTAK MENU BERSIH)
+# 7. SIDEBAR NAVIGATION
 # ==========================================
 st.sidebar.markdown(f"""
 <div class="sidebar-brand-card">
@@ -388,13 +389,6 @@ st.sidebar.markdown(f"""
 </div>
 """, unsafe_allow_html=True)
 
-# Tombol Sembunyikan Panel (Collapse Sidebar) warna solid agar selalu terlihat
-if st.sidebar.button("☰ Sembunyikan Panel", use_container_width=True, help="Ciutkan atau sembunyikan sidebar menu"):
-    st.rerun()
-
-st.sidebar.markdown("---")
-
-# Kotak Pencarian Menu
 search_query = st.sidebar.text_input("Cari Menu", placeholder="🔍 Cari menu...", label_visibility="collapsed")
 
 all_menu_options = [
@@ -451,7 +445,6 @@ if menu_option == "📊 Beranda (Dashboard)":
         if status_cols:
             critical_items = len(df_fefo[df_fefo[status_cols[0]].astype(str).str.contains("CRITICAL", case=False, na=False)])
 
-    # METRIC CARDS DENGAN TOMBOL AKSI CEPAT
     c1, c2, c3, c4 = st.columns(4)
 
     with c1:
